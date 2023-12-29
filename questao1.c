@@ -1,24 +1,36 @@
 #include <stdio.h>
 
-void vet(int n, int num[]) {
-    printf("Valores do vetor em ordem inversa:\n");
-    for (int i = n - 1; i >= 0; i--) {
-        printf("%d ", num[i]);
+void inverterv(int vetor[], int tamanho) {
+    int inicio = 0;
+    int fim = tamanho - 1;
+    int i;
+
+    while (inicio < fim) {
+        
+       i = vetor[inicio];
+        vetor[inicio] = vetor[fim];
+        vetor[fim] = i;
+
+        
+        inicio++;
+        fim--;
+    }
+}
+int main() {
+    int vetor[] = {1, 2, 3, 4, 5};
+    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
+    
+    printf("vetor original: ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", vetor[i]);
+    }
+    inverterv(vetor, tamanho);
+    
+    printf("vetor invertido: ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", vetor[i]);
     }
     printf("\n");
-}
-
-int main() {
-    int n;
-    printf("Quantos numeros voce quer no vetor? ");
-    scanf("%d", &n);
     
-    int vetor[n];
-    for (int i = 0; i < n; i++) {
-        printf("Digite o %do numero desse vetor: ");
-        scanf("%d", &vetor[i]);
-    }
-    
-    vet(n, vetor); 
     return 0;
 }
